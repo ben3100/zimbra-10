@@ -1,69 +1,8 @@
-# Zimbra 10 Installation Script
-
-This repository contains a script to install and configure Zimbra Collaboration Suite 10 on an Ubuntu 20.04 server. The script prompts the administrator for input during the installation process to customize the configuration.
-
-## Features
-
-- Prompts for the fully qualified domain name (FQDN) and timezone.
-- Updates the system and installs required dependencies.
-- Configures hostname and DNS resolution.
-- Installs and configures `dnsmasq` for local DNS resolution.
-- Downloads and installs Zimbra.
-- Configures the firewall to allow necessary ports.
-- Restarts Zimbra services and verifies the installation.
-
-## Prerequisites
-
-- Ubuntu 20.04 server with root or sudo access.
-- Internet connection to download Zimbra and dependencies.
-
-## Usage
-
-1. **Clone the repository**:
-
-    ```sh
-    git clone https://github.com/ben3100/zimbra-10.git
-    cd zimbra-10
-    ```
-
-2. **Make the script executable**:
-
-    ```sh
-    chmod +x install_zimbra_interactive.sh
-    ```
-
-3. **Run the script with root privileges**:
-
-    ```sh
-    sudo ./install_zimbra_interactive.sh
-    ```
-
-4. **Follow the prompts**:
-
-    The script will ask you to enter the fully qualified domain name (FQDN) for your Zimbra server and your timezone. Make sure to enter these values correctly.
-
-## Script Overview
-
-The `install_zimbra_interactive.sh` script performs the following actions:
-
-1. **System Update**: Updates package lists and upgrades installed packages.
-2. **Set Hostname**: Prompts for the FQDN and sets the hostname.
-3. **Configure DNS Resolution**: Updates `/etc/hosts` and `/etc/resolv.conf` to use Google's DNS servers.
-4. **Disable systemd-resolved**: Stops and disables the systemd-resolved service.
-5. **Install Dependencies**: Installs required packages including `dnsmasq-base`.
-6. **Configure dnsmasq**: Configures `dnsmasq` for local DNS resolution.
-7. **Set Timezone**: Prompts for the timezone and sets it.
-8. **Download and Extract Zimbra**: Downloads the Zimbra package and extracts it.
-9. **Install Zimbra**: Runs the Zimbra installation script with platform override.
-10. **Run Zimbra Setup**: Finalizes the Zimbra setup.
-11. **Restart Zimbra Services**: Restarts Zimbra services to apply changes.
-12. **Configure Firewall**: Opens necessary ports for Zimbra services.
-
 # Zimbra 10 Deployment Scripts
 
 ## Description
 
-Ce dépôt contient des scripts pour installer, déployer et configurer Zimbra 10 sur Ubuntu 20.04, à la fois sur un serveur unique (monoserveur) et sur une infrastructure Google Cloud Platform (GCP). Ces scripts sont conçus pour simplifier et automatiser le processus d'installation et de configuration, en garantissant une configuration optimale et sécurisée.
+Ce dépôt contient des scripts pour installer, déployer et configurer Zimbra Collaboration Suite 10 sur Ubuntu 20.04, à la fois sur un serveur unique (monoserveur) et sur une infrastructure Google Cloud Platform (GCP). Ces scripts sont conçus pour simplifier et automatiser le processus d'installation et de configuration, en garantissant une configuration optimale et sécurisée.
 
 ## Fonctionnalités
 
@@ -81,48 +20,93 @@ Ce dépôt contient des scripts pour installer, déployer et configurer Zimbra 1
 - Compte Google Cloud Platform avec un projet configuré.
 - Accès administrateur au serveur Ubuntu 20.04.
 - `gcloud` CLI installé et configuré.
+- Connexion Internet pour télécharger Zimbra et les dépendances.
 
-## Instructions
+## Usage
 
 ### Installation sur un Serveur Unique
 
-1. Clonez ce dépôt sur votre serveur :
-   ```bash
-   git clone https://github.com/ben3100/zimbra-10.git
-   cd zimbra-10
-Exécutez le script d'installation :
+1. **Clonez ce dépôt sur votre serveur** :
 
-bash
-Copier le code
-chmod +x install_zimbra_monoserver.sh
-./install_zimbra_monoserver.sh
-Suivez les instructions à l'écran pour terminer l'installation et la configuration.
+    ```bash
+    git clone https://github.com/ben3100/zimbra-10.git
+    cd zimbra-10
+    ```
 
-Déploiement sur Google Cloud Platform (GCP)
-Clonez ce dépôt sur votre machine locale :
+2. **Rendez le script exécutable** :
 
-bash
-Copier le code
-git clone https://github.com/ben3100/zimbra-10.git
-cd zimbra-10
-Exécutez le script de déploiement interactif :
+    ```bash
+    chmod +x install_zimbra_monoserver.sh
+    ```
 
-bash
-Copier le code
-chmod +x deploy_zimbra_gcp_interactive.sh
-./deploy_zimbra_gcp_interactive.sh
-Suivez les instructions interactives pour configurer votre déploiement (ID de projet, région, zone, etc.).
+3. **Exécutez le script avec les privilèges root** :
 
-Contribuer
+    ```bash
+    sudo ./install_zimbra_monoserver.sh
+    ```
+
+4. **Suivez les instructions à l'écran** :
+
+    Le script vous demandera d'entrer le nom de domaine complet (FQDN) de votre serveur Zimbra et votre fuseau horaire. Assurez-vous de saisir ces valeurs correctement.
+
+### Déploiement sur Google Cloud Platform (GCP)
+
+1. **Clonez ce dépôt sur votre machine locale** :
+
+    ```bash
+    git clone https://github.com/ben3100/zimbra-10.git
+    cd zimbra-10
+    ```
+
+2. **Rendez le script exécutable** :
+
+    ```bash
+    chmod +x deploy_zimbra_gcp_interactive.sh
+    ```
+
+3. **Exécutez le script de déploiement interactif** :
+
+    ```bash
+    ./deploy_zimbra_gcp_interactive.sh
+    ```
+
+4. **Suivez les instructions interactives** :
+
+    Le script vous guidera pour configurer votre déploiement (ID de projet, région, zone, etc.).
+
+## Script Overview
+
+### `install_zimbra_monoserver.sh`
+
+Le script `install_zimbra_monoserver.sh` effectue les actions suivantes :
+
+1. **Mise à jour du système** : Met à jour les listes de paquets et met à niveau les paquets installés.
+2. **Configuration du nom d'hôte** : Demande le FQDN et le configure.
+3. **Configuration de la résolution DNS** : Met à jour `/etc/hosts` et `/etc/resolv.conf` pour utiliser les serveurs DNS de Google.
+4. **Désactivation de systemd-resolved** : Arrête et désactive le service systemd-resolved.
+5. **Installation des dépendances** : Installe les paquets nécessaires, y compris `dnsmasq-base`.
+6. **Configuration de dnsmasq** : Configure `dnsmasq` pour la résolution DNS locale.
+7. **Configuration du fuseau horaire** : Demande le fuseau horaire et le configure.
+8. **Téléchargement et extraction de Zimbra** : Télécharge et extrait le paquet Zimbra.
+9. **Installation de Zimbra** : Exécute le script d'installation de Zimbra avec le remplacement de la plateforme.
+10. **Configuration finale de Zimbra** : Finalise la configuration de Zimbra.
+11. **Redémarrage des services Zimbra** : Redémarre les services Zimbra pour appliquer les modifications.
+12. **Configuration du pare-feu** : Ouvre les ports nécessaires pour les services Zimbra.
+13. **Message de fin** : Affiche un message indiquant que l'installation est terminée et fournit l'URL de l'interface d'administration de Zimbra.
+
+## Contribuer
+
 Les contributions sont les bienvenues ! Si vous avez des idées pour améliorer ces scripts, n'hésitez pas à créer une pull request ou à ouvrir une issue.
 
-Auteurs
-Ben Belaouedj
-Licence
-Ce projet est sous licence MIT. Voir le fichier LICENSE pour plus de détails.
-13. **Completion Message**: Displays a message indicating that the installation is complete and provides the URL for the Zimbra admin interface.
+## Auteurs
 
-## Accessing Zimbra
+- [Ben Belaouedj](https://www.linkedin.com/in/benbelaouedj)
 
-After the installation is complete, you can access the Zimbra admin interface via the following URL:
+## Licence
+
+Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
+
+## Accéder à Zimbra
+
+Après l'installation, vous pouvez accéder à l'interface d'administration de Zimbra via l'URL suivante :
 
