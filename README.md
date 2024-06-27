@@ -58,6 +58,68 @@ The `install_zimbra_interactive.sh` script performs the following actions:
 10. **Run Zimbra Setup**: Finalizes the Zimbra setup.
 11. **Restart Zimbra Services**: Restarts Zimbra services to apply changes.
 12. **Configure Firewall**: Opens necessary ports for Zimbra services.
+
+# Zimbra 10 Deployment Scripts
+
+## Description
+
+Ce dépôt contient des scripts pour installer, déployer et configurer Zimbra 10 sur Ubuntu 20.04, à la fois sur un serveur unique (monoserveur) et sur une infrastructure Google Cloud Platform (GCP). Ces scripts sont conçus pour simplifier et automatiser le processus d'installation et de configuration, en garantissant une configuration optimale et sécurisée.
+
+## Fonctionnalités
+
+- **Installation Automatisée** : Installez et configurez Zimbra 10 sur un serveur unique.
+- **Déploiement sur GCP** : Déployez Zimbra 10 sur Google Cloud Platform avec une configuration personnalisée.
+- **Sécurité** : Intègre des règles de pare-feu et des configurations de sécurité.
+
+## Contenu du Dépôt
+
+- `install_zimbra_monoserver.sh` : Script pour installer et configurer Zimbra sur un serveur unique.
+- `deploy_zimbra_gcp_interactive.sh` : Script interactif pour déployer et configurer Zimbra sur GCP.
+
+## Prérequis
+
+- Compte Google Cloud Platform avec un projet configuré.
+- Accès administrateur au serveur Ubuntu 20.04.
+- `gcloud` CLI installé et configuré.
+
+## Instructions
+
+### Installation sur un Serveur Unique
+
+1. Clonez ce dépôt sur votre serveur :
+   ```bash
+   git clone https://github.com/ben3100/zimbra-10.git
+   cd zimbra-10
+Exécutez le script d'installation :
+
+bash
+Copier le code
+chmod +x install_zimbra_monoserver.sh
+./install_zimbra_monoserver.sh
+Suivez les instructions à l'écran pour terminer l'installation et la configuration.
+
+Déploiement sur Google Cloud Platform (GCP)
+Clonez ce dépôt sur votre machine locale :
+
+bash
+Copier le code
+git clone https://github.com/ben3100/zimbra-10.git
+cd zimbra-10
+Exécutez le script de déploiement interactif :
+
+bash
+Copier le code
+chmod +x deploy_zimbra_gcp_interactive.sh
+./deploy_zimbra_gcp_interactive.sh
+Suivez les instructions interactives pour configurer votre déploiement (ID de projet, région, zone, etc.).
+
+Contribuer
+Les contributions sont les bienvenues ! Si vous avez des idées pour améliorer ces scripts, n'hésitez pas à créer une pull request ou à ouvrir une issue.
+
+Auteurs
+Ben Belaouedj
+Licence
+Ce projet est sous licence MIT. Voir le fichier LICENSE pour plus de détails.
 13. **Completion Message**: Displays a message indicating that the installation is complete and provides the URL for the Zimbra admin interface.
 
 ## Accessing Zimbra
