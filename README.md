@@ -108,5 +108,8 @@ Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de 
 
 ## Accéder à Zimbra
 
-Après l'installation, vous pouvez accéder à l'interface d'administration de Zimbra via l'URL suivante :
+Après l'installation, vous pouvez accéder à l'interface d'administration de Zimbra via l'URL suivante : 
+https://<votre-domaine>:7071
 
+
+Remplacez `<votre-domaine>` par le FQDN de votre serveur Zimbra.
